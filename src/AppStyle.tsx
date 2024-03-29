@@ -87,8 +87,8 @@ export const SortSelectOption = styled.option`
 
 export const UsersContainer = styled.div`
   margin-top: 32px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
   padding-left: 20px;
   padding-right: 20px;
