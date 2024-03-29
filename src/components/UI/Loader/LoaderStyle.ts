@@ -11,6 +11,7 @@ export const LoaderContainer = styled.div`
 export const LoaderText = styled.p`
   color: #fff;
   font-size: 32px;
+  margin-bottom: 32px;
 `
 
 export const Loader = styled.div`
