@@ -1,4 +1,5 @@
-import { useGetPopularUsersQuery } from './hooks/useGetPopularUsersQuery'
+import { SearchBar } from './components'
+import { useGetPopularUsersQuery } from './hooks'
 import { IUser } from './types/types'
 import { GlobalStyle } from './GlobalStyle'
 import * as styles from './AppStyle'
@@ -16,19 +17,7 @@ export const App = () => {
       <GlobalStyle />
       <styles.Wrapper>
         <styles.Title>Сервис для поиска пользователей GitHub</styles.Title>
-        <styles.Menu>
-          <styles.SearchContainer>
-            <styles.Search placeholder='Введите логин' />
-            <styles.SearchButton>Поиск</styles.SearchButton>
-          </styles.SearchContainer>
-          <styles.SortContainer>
-            <styles.SortText>Репозитории по:</styles.SortText>
-            <styles.SortSelect>
-              <styles.SortSelectOption>Возрастанию</styles.SortSelectOption>
-              <styles.SortSelectOption>Убыванию</styles.SortSelectOption>
-            </styles.SortSelect>
-          </styles.SortContainer>
-        </styles.Menu>
+        <SearchBar />
         <styles.UsersContainer>
           {isPopularUsersSuccess &&
             popularUsers.map((user: IUser) => {
