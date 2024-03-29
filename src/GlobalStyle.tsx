@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 body {
-    background-color: #6600FF;
+    background-color: #201f22;
     display: flex;
     justify-content: center;
 }

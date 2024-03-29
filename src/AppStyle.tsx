@@ -9,10 +9,23 @@ export const Wrapper = styled.div`
   justify-items: center;
 `
 
-export const SearchContainer = styled.div`
+export const Title = styled.h1`
+  margin-top: 36px;
+  color: #ee5a0b;
+  font-size: 48px;
+  text-align: center;
+`
+
+export const Menu = styled.div`
   margin-top: 72px;
   display: flex;
   justify-content: space-between;
+`
+
+export const SearchContainer = styled.div`
+  display: flex;
+  gap: 20px;
+  margin-left: 20px;
 `
 
 export const Search = styled.input`
@@ -22,7 +35,6 @@ export const Search = styled.input`
   padding: 10px 20px 10px 20px;
   background-color: white;
   font-size: 24px;
-  box-sizing: border-box;
 
   &::placeholder {
     color: gray;
@@ -30,10 +42,28 @@ export const Search = styled.input`
   }
 `
 
+export const Button = styled.button`
+  border: none;
+  border-radius: 32px;
+  outline: none;
+  padding: 10px 20px 10px 20px;
+  background-color: white;
+  font-size: 24px;
+  color: #fff;
+  background-color: #ee5a0b;
+  cursor: pointer;
+  transition: all 0.15s;
+
+  &:hover {
+    background-color: #d05d1f;
+  }
+`
+
 export const SortContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 18px;
+  margin-right: 20px;
 `
 
 export const SortText = styled.p`
@@ -48,6 +78,7 @@ export const SortSelect = styled.select`
   padding: 10px 20px 10px 20px;
   background-color: white;
   font-size: 24px;
+  cursor: pointer;
 `
 
 export const SortSelectOption = styled.option`

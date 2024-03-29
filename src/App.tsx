@@ -6,8 +6,12 @@ export const App = () => {
     <>
       <GlobalStyle />
       <styles.Wrapper>
-        <styles.SearchContainer>
-          <styles.Search placeholder='Введите логин' />
+        <styles.Title>Сервис для поиска пользователей GitHub</styles.Title>
+        <styles.Menu>
+          <styles.SearchContainer>
+            <styles.Search placeholder='Введите логин' />
+            <styles.Button>Поиск</styles.Button>
+          </styles.SearchContainer>
           <styles.SortContainer>
             <styles.SortText>Репозитории по:</styles.SortText>
             <styles.SortSelect>
@@ -15,7 +19,7 @@ export const App = () => {
               <styles.SortSelectOption>Убыванию</styles.SortSelectOption>
             </styles.SortSelect>
           </styles.SortContainer>
-        </styles.SearchContainer>
+        </styles.Menu>
         <styles.UsersContainer></styles.UsersContainer>
       </styles.Wrapper>
     </>
