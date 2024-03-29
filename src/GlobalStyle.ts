@@ -6,10 +6,11 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat-Regular';
+    font-weight: normal;
 }
 
 body {
-    background-color: #6600FF;
+    background-color: #201f22;
     display: flex;
     justify-content: center;
 }

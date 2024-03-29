@@ -1,22 +1,25 @@
-import * as styles from './AppStyle'
+import { Loader, SearchBar, UsersList, ErrorMessage } from './components'
+import { useGetPopularUsersQuery } from './hooks'
 import { GlobalStyle } from './GlobalStyle'
+import * as styles from './AppStyle'
 
 export const App = () => {
+  const {
+    data: popularUsers,
+    isLoading: isPopularUsersLoading,
+    isError: isPopularUsersError,
+    isSuccess: isPopularUsersSuccess,
+  } = useGetPopularUsersQuery()
+
   return (
     <>
       <GlobalStyle />
       <styles.Wrapper>
-        <styles.SearchContainer>
-          <styles.Search placeholder='Введите логин' />
-          <styles.SortContainer>
-            <styles.SortText>Репозитории по:</styles.SortText>
-            <styles.SortSelect>
-              <styles.SortSelectOption>Возрастанию</styles.SortSelectOption>
-              <styles.SortSelectOption>Убыванию</styles.SortSelectOption>
-            </styles.SortSelect>
-          </styles.SortContainer>
-        </styles.SearchContainer>
-        <styles.UsersContainer></styles.UsersContainer>
+        <styles.Title>Сервис для поиска пользователей GitHub</styles.Title>
+        <SearchBar />
+        {isPopularUsersLoading && <Loader />}
+        {isPopularUsersSuccess && <UsersList users={popularUsers} isSuccess={isPopularUsersSuccess} />}
+        {isPopularUsersError && <ErrorMessage />}
       </styles.Wrapper>
     </>
   )
