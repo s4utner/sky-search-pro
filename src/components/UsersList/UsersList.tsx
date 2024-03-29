@@ -1,6 +1,7 @@
-import * as styles from './UserListStyle'
+import { UserCard } from '../../components'
 import type { FC } from 'react'
 import { IUser } from '../../types/types'
+import * as styles from './UserListStyle'
 
 interface UserListProps {
   users: IUser[]
@@ -10,18 +11,7 @@ interface UserListProps {
 export const UsersList: FC<UserListProps> = ({ users, isSuccess }) => {
   return (
     <styles.UsersList>
-      {isSuccess &&
-        users.map((user: IUser) => {
-          return (
-            <styles.UserContainer key={user.id}>
-              <styles.UserInfo>
-                <styles.UserAvatar src={user.avatar_url}></styles.UserAvatar>
-                <styles.UserLogin>{user.login}</styles.UserLogin>
-              </styles.UserInfo>
-              <styles.UserButton>Подробнее</styles.UserButton>
-            </styles.UserContainer>
-          )
-        })}
+      {isSuccess && users.map((user: IUser) => <UserCard key={user.id} user={user} />)}
     </styles.UsersList>
   )
 }
