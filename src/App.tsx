@@ -1,4 +1,4 @@
-import { Loader, SearchBar, UsersList } from './components'
+import { Loader, SearchBar, UsersList, ErrorMessage } from './components'
 import { useGetPopularUsersQuery } from './hooks'
 import { GlobalStyle } from './GlobalStyle'
 import * as styles from './AppStyle'
@@ -19,6 +19,7 @@ export const App = () => {
         <SearchBar />
         {isPopularUsersLoading && <Loader />}
         {isPopularUsersSuccess && <UsersList users={popularUsers} isSuccess={isPopularUsersSuccess} />}
+        {isPopularUsersError && <ErrorMessage />}
       </styles.Wrapper>
     </>
   )
