@@ -1,4 +1,5 @@
 import { useGetPopularUsersQuery } from './hooks/useGetPopularUsersQuery'
+import { IUser } from './types/types'
 import { GlobalStyle } from './GlobalStyle'
 import * as styles from './AppStyle'
 
@@ -18,7 +19,7 @@ export const App = () => {
         <styles.Menu>
           <styles.SearchContainer>
             <styles.Search placeholder='Введите логин' />
-            <styles.Button>Поиск</styles.Button>
+            <styles.SearchButton>Поиск</styles.SearchButton>
           </styles.SearchContainer>
           <styles.SortContainer>
             <styles.SortText>Репозитории по:</styles.SortText>
@@ -30,8 +31,16 @@ export const App = () => {
         </styles.Menu>
         <styles.UsersContainer>
           {isPopularUsersSuccess &&
-            popularUsers.map((user: object) => {
-              console.log(user)
+            popularUsers.map((user: IUser) => {
+              return (
+                <styles.UserContainer>
+                  <styles.UserInfo>
+                    <styles.UserAvatar src={user.avatar_url}></styles.UserAvatar>
+                    <styles.UserLogin>{user.login}</styles.UserLogin>
+                  </styles.UserInfo>
+                  <styles.UserButton>Подробнее</styles.UserButton>
+                </styles.UserContainer>
+              )
             })}
         </styles.UsersContainer>
       </styles.Wrapper>
