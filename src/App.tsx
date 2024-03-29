@@ -1,4 +1,4 @@
-import { SearchBar, UsersList } from './components'
+import { Loader, SearchBar, UsersList } from './components'
 import { useGetPopularUsersQuery } from './hooks'
 import { GlobalStyle } from './GlobalStyle'
 import * as styles from './AppStyle'
@@ -17,7 +17,8 @@ export const App = () => {
       <styles.Wrapper>
         <styles.Title>Сервис для поиска пользователей GitHub</styles.Title>
         <SearchBar />
-        <UsersList users={popularUsers} isSuccess={isPopularUsersSuccess} />
+        {isPopularUsersLoading && <Loader />}
+        {isPopularUsersSuccess && <UsersList users={popularUsers} isSuccess={isPopularUsersSuccess} />}
       </styles.Wrapper>
     </>
   )
