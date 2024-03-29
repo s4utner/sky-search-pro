@@ -26,23 +26,6 @@ export const Search = styled.input`
   }
 `
 
-export const SearchButton = styled.button`
-  border: none;
-  border-radius: 32px;
-  outline: none;
-  padding: 10px 20px 10px 20px;
-  background-color: white;
-  font-size: 24px;
-  color: #fff;
-  background-color: #ee5a0b;
-  cursor: pointer;
-  transition: all 0.15s;
-
-  &:hover {
-    background-color: #d05d1f;
-  }
-`
-
 export const SortContainer = styled.div`
   display: flex;
   align-items: center;

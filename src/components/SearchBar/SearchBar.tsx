@@ -1,10 +1,11 @@
+import { Button } from '../../components'
 import * as styles from './SearchBarStyle'
 
 export const SearchBar = () => (
   <styles.SearchBar>
     <styles.SearchContainer>
       <styles.Search placeholder='Введите логин' />
-      <styles.SearchButton>Поиск</styles.SearchButton>
+      <Button children={'Поиск'} />
     </styles.SearchContainer>
     <styles.SortContainer>
       <styles.SortText>Репозитории по:</styles.SortText>
