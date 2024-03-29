@@ -91,3 +91,8 @@ export const UsersContainer = styled.div`
   flex-direction: column;
   gap: 20px;
 `
+
+export const UserContainer = styled.div`
+  height: 48px;
+  display: flex;
+`
