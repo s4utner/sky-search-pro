@@ -1,5 +1,14 @@
 import { styled } from 'styled-components'
 
+export const Background = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #201f2295;
+`
+
 export const MainInfo = styled.div`
   z-index: 2;
   padding: 16px 62px 16px 62px;

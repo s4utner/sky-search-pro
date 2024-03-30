@@ -1,12 +1,9 @@
-import { useState } from 'react'
 import { Loader, SearchBar, UsersList, ErrorMessage } from './components'
 import { useGetPopularUsersQuery } from './hooks'
 import { GlobalStyle } from './GlobalStyle'
 import * as styles from './AppStyle'
 
 export const App = () => {
-  const [isUserModalVisible, setIsUserModalVisible] = useState(false)
-
   const {
     data: popularUsers,
     isLoading: isPopularUsersLoading,
@@ -24,7 +21,6 @@ export const App = () => {
         {isPopularUsersSuccess && <UsersList users={popularUsers} isSuccess={isPopularUsersSuccess} />}
         {isPopularUsersError && <ErrorMessage />}
       </styles.Wrapper>
-      {isUserModalVisible && <styles.ModalBackground />}
     </>
   )
 }

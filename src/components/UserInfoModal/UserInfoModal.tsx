@@ -43,21 +43,23 @@ export const UserInfoModal: FC<UserInfoModalProps> = ({
   } = useGetUserRepositoriesQuery(reposUrl)
 
   return (
-    <styles.MainInfo>
-      {isFollowersNumberLoading || isOrganizationsNumberLoading || isRepositoriesNumberLoading ? (
-        <Loader />
-      ) : (
-        <>
-          <styles.CloseIcon src={closeIcon} onClick={closeModal} />
-          <styles.Avatar src={avatarUrl} />
-          <styles.Info>
-            <styles.Login href={`https://github.com/${login}`}>{login}</styles.Login>
-            {isFollowersNumberSuccess && <styles.InfoText>Подписчики: {followersNumber}</styles.InfoText>}
-            {isRepositoriesNumberSuccess && <styles.InfoText>Репозитории: {repositoriesNumber}</styles.InfoText>}
-            {isOrganizationsNumberSuccess && <styles.InfoText>Организации: {organizationsNumber}</styles.InfoText>}
-          </styles.Info>
-        </>
-      )}
-    </styles.MainInfo>
+    <styles.Background onClick={closeModal}>
+      <styles.MainInfo onClick={(event) => event.stopPropagation()}>
+        {isFollowersNumberLoading || isOrganizationsNumberLoading || isRepositoriesNumberLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <styles.CloseIcon src={closeIcon} onClick={closeModal} />
+            <styles.Avatar src={avatarUrl} />
+            <styles.Info>
+              <styles.Login href={`https://github.com/${login}`}>{login}</styles.Login>
+              {isFollowersNumberSuccess && <styles.InfoText>Подписчики: {followersNumber}</styles.InfoText>}
+              {isRepositoriesNumberSuccess && <styles.InfoText>Репозитории: {repositoriesNumber}</styles.InfoText>}
+              {isOrganizationsNumberSuccess && <styles.InfoText>Организации: {organizationsNumber}</styles.InfoText>}
+            </styles.Info>
+          </>
+        )}
+      </styles.MainInfo>
+    </styles.Background>
   )
 }
