@@ -23,3 +23,39 @@ export const getUsersByLogin = async (login: string) => {
   const users = usersObject.items
   return users
 }
+
+export const getUserFollowers = async (url: string) => {
+  const response = await fetch(url)
+
+  if (!response.ok) {
+    console.log('Произошла ошибка')
+  }
+
+  const followers = await response.json()
+  const followersNumber: number = followers.length
+  return followersNumber
+}
+
+export const getUserRepositories = async (url: string) => {
+  const response = await fetch(url)
+
+  if (!response.ok) {
+    console.log('Произошла ошибка')
+  }
+
+  const repositories = await response.json()
+  const repositoriesNumber: number = repositories.length
+  return repositoriesNumber
+}
+
+export const getUserOrganizations = async (url: string) => {
+  const response = await fetch(url)
+
+  if (!response.ok) {
+    console.log('Произошла ошибка')
+  }
+
+  const organizations = await response.json()
+  const organizationsNumber = organizations.length
+  return organizationsNumber
+}

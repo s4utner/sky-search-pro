@@ -24,7 +24,7 @@ export const UserCard: FC<UserCardProps> = ({ user }) => {
         <UserInfoModal
           avatarUrl={user.avatar_url}
           login={user.login}
-          followers={user.followers}
+          followers={user.followers_url}
           reposUrl={user.repos_url}
           organizationsUrl={user.organizations_url}
           closeModal={() => setIsUserModalVisible(false)}

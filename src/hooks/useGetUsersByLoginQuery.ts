@@ -5,4 +5,5 @@ export const useGetUsersByLoginQuery = (login: string) =>
   useQuery({
     queryFn: () => getUsersByLogin(login),
     queryKey: ['users', 'login'],
+    enabled: !!login
   })

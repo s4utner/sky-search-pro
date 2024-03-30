@@ -1,3 +1,5 @@
+import { Loader } from '../../components'
+import { useGetUserFollowersQuery, useGetUserOrganizationsQuery, useGetUserRepositoriesQuery } from '../../hooks'
 import type { FC } from 'react'
 import closeIcon from '../../assets/img/close_icon.png'
 import * as styles from './UserInfoModalStyle'
@@ -5,9 +7,9 @@ import * as styles from './UserInfoModalStyle'
 interface UserInfoModalProps {
   avatarUrl: string
   login: string
-  followers?: string
-  reposUrl?: string
-  organizationsUrl?: string
+  followers: string
+  reposUrl: string
+  organizationsUrl: string
   closeModal: () => void
 }
 
@@ -19,18 +21,43 @@ export const UserInfoModal: FC<UserInfoModalProps> = ({
   organizationsUrl,
   closeModal,
 }) => {
-  console.log(followers, reposUrl, organizationsUrl)
+  const {
+    data: followersNumber,
+    isLoading: isFollowersNumberLoading,
+    isError: isFollowersNumberError,
+    isSuccess: isFollowersNumberSuccess,
+  } = useGetUserFollowersQuery(followers)
+
+  const {
+    data: organizationsNumber,
+    isLoading: isOrganizationsNumberLoading,
+    isError: isOrganizationsNumberError,
+    isSuccess: isOrganizationsNumberSuccess,
+  } = useGetUserOrganizationsQuery(organizationsUrl)
+
+  const {
+    data: repositoriesNumber,
+    isLoading: isRepositoriesNumberLoading,
+    isError: isRepositoriesNumberError,
+    isSuccess: isRepositoriesNumberSuccess,
+  } = useGetUserRepositoriesQuery(reposUrl)
 
   return (
     <styles.MainInfo>
-      <styles.CloseIcon src={closeIcon} onClick={closeModal} />
-      <styles.Avatar src={avatarUrl} />
-      <styles.Info>
-        <styles.Login href={`https://github.com/${login}`}>{login}</styles.Login>
-        {followers && <styles.InfoText>Подписчики:</styles.InfoText>}
-        {reposUrl && <styles.InfoText>Репозитории:</styles.InfoText>}
-        {organizationsUrl && <styles.InfoText>Организации:</styles.InfoText>}
-      </styles.Info>
+      {isFollowersNumberLoading || isOrganizationsNumberLoading || isRepositoriesNumberLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <styles.CloseIcon src={closeIcon} onClick={closeModal} />
+          <styles.Avatar src={avatarUrl} />
+          <styles.Info>
+            <styles.Login href={`https://github.com/${login}`}>{login}</styles.Login>
+            {isFollowersNumberSuccess && <styles.InfoText>Подписчики: {followersNumber}</styles.InfoText>}
+            {isRepositoriesNumberSuccess && <styles.InfoText>Репозитории: {repositoriesNumber}</styles.InfoText>}
+            {isOrganizationsNumberSuccess && <styles.InfoText>Организации: {organizationsNumber}</styles.InfoText>}
+          </styles.Info>
+        </>
+      )}
     </styles.MainInfo>
   )
 }
