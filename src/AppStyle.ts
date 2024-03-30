@@ -15,3 +15,13 @@ export const Title = styled.h1`
   font-size: 48px;
   text-align: center;
 `
+
+export const ModalBackground = styled.div`
+  position: absolute;
+  opacity: 0.7;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #201f22;
+`
