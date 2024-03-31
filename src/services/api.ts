@@ -15,7 +15,7 @@ export const getUserRepositories = async (url: string) => {
 }
 
 export const getUserOrganizations = async (url: string) => {
-  const response = await fetch(url)
+  const response = await fetch(`${url}?per_page=100`)
   const organizations = await response.json()
   const organizationsNumber = organizations.length
   return organizationsNumber
