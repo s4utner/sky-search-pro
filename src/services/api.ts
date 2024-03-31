@@ -1,11 +1,14 @@
 const baseUrl = 'https://api.github.com/search/users?q='
 
-export const getUsersByLogin = async (login: string, pageNumber: number) => {
-  const response = await fetch(`${baseUrl}${login}&per_page=14&page=${pageNumber}&sort=repositories`, {
-    headers: {
-      accept: 'application/vnd.github+json',
-    },
-  })
+export const getUsersByLogin = async (login: string, pageNumber: number, sortMethod: string) => {
+  const response = await fetch(
+    `${baseUrl}${login}&sort=repositories&order=${sortMethod}&per_page=14&page=${pageNumber}`,
+    {
+      headers: {
+        accept: 'application/vnd.github+json',
+      },
+    }
+  )
 
   const usersObject = await response.json()
   const users = usersObject.items

@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 export const App = () => {
   const [login, setLogin] = useState('')
   const [pageNumber, setPageNumber] = useState(1)
+  const [sortMethod, setSortMethod] = useState('desc')
 
   useEffect(() => {
     if (login === '') {
@@ -19,14 +20,18 @@ export const App = () => {
     isLoading: isSearchedUsersLoading,
     isError: isSearchedUsersError,
     isSuccess: isSearchedUsersSuccess,
-  } = useGetUsersByLoginQuery(login, pageNumber)
+  } = useGetUsersByLoginQuery(login, pageNumber, sortMethod)
 
   return (
     <>
       <GlobalStyle />
       <styles.Wrapper>
         <styles.Title>Сервис для поиска пользователей GitHub</styles.Title>
-        <SearchBar login={login} setLogin={(login) => setLogin(login as string)} />
+        <SearchBar
+          login={login}
+          setLogin={(login: string) => setLogin(login)}
+          setSortMethod={(sortMethod: string) => setSortMethod(sortMethod)}
+        />
         {isSearchedUsersLoading && <Loader />}
         <UsersList
           users={searchedUsers}
