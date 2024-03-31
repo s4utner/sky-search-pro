@@ -1,5 +1,5 @@
 import { ErrorMessage, Loader } from '../../components'
-import { useGetUserFollowersQuery, useGetUserOrganizationsQuery, useGetUserRepositoriesQuery } from '../../hooks'
+import { useGetUserOrganizationsQuery, useGetUserRepositoriesQuery } from '../../hooks'
 import type { FC } from 'react'
 import closeIcon from '../../assets/img/close_icon.png'
 import * as styles from './UserInfoModalStyle'
@@ -7,27 +7,12 @@ import * as styles from './UserInfoModalStyle'
 interface UserInfoModalProps {
   avatarUrl: string
   login: string
-  followers: string
   reposUrl: string
   organizationsUrl: string
   closeModal: () => void
 }
 
-export const UserInfoModal: FC<UserInfoModalProps> = ({
-  avatarUrl,
-  login,
-  followers,
-  reposUrl,
-  organizationsUrl,
-  closeModal,
-}) => {
-  const {
-    data: followersNumber,
-    isLoading: isFollowersNumberLoading,
-    isError: isFollowersNumberError,
-    isSuccess: isFollowersNumberSuccess,
-  } = useGetUserFollowersQuery(followers)
-
+export const UserInfoModal: FC<UserInfoModalProps> = ({ avatarUrl, login, reposUrl, organizationsUrl, closeModal }) => {
   const {
     data: organizationsNumber,
     isLoading: isOrganizationsNumberLoading,
@@ -46,16 +31,15 @@ export const UserInfoModal: FC<UserInfoModalProps> = ({
     <styles.Background onClick={closeModal}>
       <styles.MainInfo onClick={(event) => event.stopPropagation()}>
         <styles.CloseIcon src={closeIcon} onClick={closeModal} />
-        {isFollowersNumberLoading || isOrganizationsNumberLoading || isRepositoriesNumberLoading ? (
+        {isOrganizationsNumberLoading || isRepositoriesNumberLoading ? (
           <Loader variant={'secondary'} />
-        ) : isFollowersNumberError || isOrganizationsNumberError || isRepositoriesNumberError ? (
+        ) : isOrganizationsNumberError || isRepositoriesNumberError ? (
           <ErrorMessage variant={'secondary'} />
         ) : (
           <>
             <styles.Avatar src={avatarUrl} />
             <styles.Info>
               <styles.Login href={`https://github.com/${login}`}>{login}</styles.Login>
-              {isFollowersNumberSuccess && <styles.InfoText>Подписчики: {followersNumber}</styles.InfoText>}
               {isRepositoriesNumberSuccess && <styles.InfoText>Репозитории: {repositoriesNumber}</styles.InfoText>}
               {isOrganizationsNumberSuccess && <styles.InfoText>Организации: {organizationsNumber}</styles.InfoText>}
             </styles.Info>

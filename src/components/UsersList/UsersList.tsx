@@ -3,15 +3,29 @@ import type { FC } from 'react'
 import { IUser } from '../../types/types'
 import * as styles from './UserListStyle'
 
-interface UserListProps {
+export interface UserListProps {
   users: IUser[]
-  isSuccess: boolean
+  isLoading?: boolean
+  isSuccess?: boolean
+  isError?: boolean
 }
 
-export const UsersList: FC<UserListProps> = ({ users, isSuccess }) => {
+export const UsersList: FC<UserListProps> = ({ users, isLoading, isSuccess, isError }) => {
+  console.log(isSuccess)
+  console.log(!isLoading)
+  users && console.log(users.length < 1)
+  console.log(!isError)
+
   return (
-    <styles.UsersList>
-      {isSuccess && users.map((user: IUser) => <UserCard key={user.id} user={user} />)}
+    <styles.UsersList users={users}>
+      {isSuccess && users.length > 0 ? (
+        users.map((user: IUser) => <UserCard key={user.id} user={user} />)
+      ) : isSuccess && !isLoading && users.length < 1 && !isError ? (
+        <styles.NoUsersMessage>Пользователи по запросу не найдены</styles.NoUsersMessage>
+      ) : (
+        !isLoading &&
+        !isError && <styles.NoUsersMessage>Введите логин пользователя, которого хотите найти</styles.NoUsersMessage>
+      )}
     </styles.UsersList>
   )
 }

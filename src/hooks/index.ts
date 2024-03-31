@@ -1,5 +1,3 @@
-export { useGetPopularUsersQuery } from './useGetPopularUsersQuery'
 export { useGetUsersByLoginQuery } from './useGetUsersByLoginQuery'
-export { useGetUserFollowersQuery } from './useGetUserFollowersQuery'
 export { useGetUserOrganizationsQuery } from './useGetUserOrganizationsQuery'
 export { useGetUserRepositoriesQuery } from './useGetUserRepositoriesQuery'
