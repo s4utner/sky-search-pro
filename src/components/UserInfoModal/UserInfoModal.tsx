@@ -40,7 +40,7 @@ export const UserInfoModal: FC<UserInfoModalProps> = ({ avatarUrl, login, reposU
             <styles.Avatar src={avatarUrl} />
             <styles.Info>
               <styles.Login href={`https://github.com/${login}`}>{login}</styles.Login>
-              {isRepositoriesNumberSuccess && <styles.InfoText>Репозитории: {repositoriesNumber}</styles.InfoText>}
+              {isRepositoriesNumberSuccess && <styles.InfoText>Репозитории: {repositoriesNumber < 100 ? repositoriesNumber : '>100'}</styles.InfoText>}
               {isOrganizationsNumberSuccess && <styles.InfoText>Организации: {organizationsNumber}</styles.InfoText>}
             </styles.Info>
           </>

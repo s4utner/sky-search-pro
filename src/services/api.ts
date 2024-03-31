@@ -1,7 +1,7 @@
 const baseUrl = 'https://api.github.com/search/users?q='
 
 export const getUsersByLogin = async (login: string) => {
-  const response = await fetch(`${baseUrl}${login}`)
+  const response = await fetch(`${baseUrl}${login}&per_page=12`)
 
   if (!response.ok) {
     console.log('Произошла ошибка')
@@ -13,7 +13,9 @@ export const getUsersByLogin = async (login: string) => {
 }
 
 export const getUserRepositories = async (url: string) => {
-  const response = await fetch(url)
+  const response = await fetch(`${url}?per_page=100`)
+
+  console.log(response)
 
   if (!response.ok) {
     console.log('Произошла ошибка')

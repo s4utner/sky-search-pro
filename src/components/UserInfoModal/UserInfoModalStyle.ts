@@ -13,7 +13,7 @@ export const MainInfo = styled.div`
   z-index: 2;
   padding: 16px 62px 16px 62px;
   max-width: 640px;
-  height: 182px;
+  min-height: 182px;
   border-radius: 16px;
   background-color: #fff;
   position: absolute;
