@@ -15,6 +15,6 @@ export const NoUsersMessage = styled.div`
   margin-top: 144px;
   width: 100%;
   text-align: center;
-  font-size: 24px;
+  font-size: 32px;
   color: #fff;
 `
