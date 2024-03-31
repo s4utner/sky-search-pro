@@ -1,17 +1,17 @@
 import { styled } from 'styled-components'
+import { LoaderProps } from './Loader'
 
-export const LoaderContainer = styled.div`
-  margin-top: 144px;
+export const LoaderContainer = styled.div<LoaderProps>`
+  margin-top: ${({ variant }) => (variant === 'primary' ? '144px' : '0')};
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 48px;
   align-items: center;
 `
 
-export const LoaderText = styled.p`
-  color: #fff;
+export const LoaderText = styled.p<LoaderProps>`
+  color: ${({ variant }) => (variant === 'primary' ? '#fff' : '#000')};
   font-size: 32px;
-  margin-bottom: 32px;
 `
 
 export const Loader = styled.div`
