@@ -5,7 +5,7 @@ export const LoaderContainer = styled.div<LoaderProps>`
   margin-top: ${({ variant }) => (variant === 'primary' ? '144px' : '0')};
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 48px;
   align-items: center;
 `
 

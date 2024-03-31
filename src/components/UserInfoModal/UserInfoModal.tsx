@@ -1,4 +1,4 @@
-import { Loader } from '../../components'
+import { ErrorMessage, Loader } from '../../components'
 import { useGetUserFollowersQuery, useGetUserOrganizationsQuery, useGetUserRepositoriesQuery } from '../../hooks'
 import type { FC } from 'react'
 import closeIcon from '../../assets/img/close_icon.png'
@@ -45,11 +45,13 @@ export const UserInfoModal: FC<UserInfoModalProps> = ({
   return (
     <styles.Background onClick={closeModal}>
       <styles.MainInfo onClick={(event) => event.stopPropagation()}>
+        <styles.CloseIcon src={closeIcon} onClick={closeModal} />
         {isFollowersNumberLoading || isOrganizationsNumberLoading || isRepositoriesNumberLoading ? (
           <Loader variant={'secondary'} />
+        ) : isFollowersNumberError || isOrganizationsNumberError || isRepositoriesNumberError ? (
+          <ErrorMessage variant={'secondary'} />
         ) : (
           <>
-            <styles.CloseIcon src={closeIcon} onClick={closeModal} />
             <styles.Avatar src={avatarUrl} />
             <styles.Info>
               <styles.Login href={`https://github.com/${login}`}>{login}</styles.Login>
