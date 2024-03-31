@@ -1,7 +1,8 @@
 import { styled } from 'styled-components'
+import { ButtonProps } from './Button'
 
-export const Button = styled.button`
-  font-size: 16px;
+export const Button = styled.button<ButtonProps>`
+  font-size: ${({ variant }) => (variant === 'primary' ? '24px' : '16px')};
   border: none;
   border-radius: 32px;
   outline: none;

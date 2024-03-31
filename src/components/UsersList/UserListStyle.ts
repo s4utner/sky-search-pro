@@ -8,7 +8,6 @@ export const UsersList = styled.div<UserListProps>`
   gap: 20px;
   padding-left: 20px;
   padding-right: 20px;
-  margin-bottom: 72px;
 `
 
 export const NoUsersMessage = styled.div`

@@ -1,4 +1,4 @@
-import { Loader, SearchBar, UsersList, ErrorMessage } from './components'
+import { Loader, SearchBar, UsersList, ErrorMessage, Button } from './components'
 import { useGetUsersByLoginQuery } from './hooks'
 import { GlobalStyle } from './GlobalStyle'
 import * as styles from './AppStyle'
@@ -27,6 +27,11 @@ export const App = () => {
           isSuccess={isSearchedUsersSuccess}
           isError={isSearchedUsersError}
         />
+        {isSearchedUsersSuccess && searchedUsers.length > 0 && (
+          <styles.ButtonContainer>
+            <Button children={'Показать еще'} />
+          </styles.ButtonContainer>
+        )}
         {isSearchedUsersError && <ErrorMessage />}
       </styles.Wrapper>
     </>

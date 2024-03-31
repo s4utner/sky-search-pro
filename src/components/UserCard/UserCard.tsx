@@ -18,7 +18,7 @@ export const UserCard: FC<UserCardProps> = ({ user }) => {
           <styles.UserAvatar src={user.avatar_url}></styles.UserAvatar>
           <styles.UserLogin>{user.login}</styles.UserLogin>
         </styles.UserInfo>
-        <Button children={'Подробнее'} onClick={() => setIsUserModalVisible(true)} />
+        <Button children={'Подробнее'} variant={'secondary'} onClick={() => setIsUserModalVisible(true)} />
       </styles.UserCard>
       {isUserModalVisible && (
         <UserInfoModal

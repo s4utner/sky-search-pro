@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   justify-items: center;
+  padding-bottom: 72px;
 `
 
 export const Title = styled.h1`
@@ -14,4 +15,11 @@ export const Title = styled.h1`
   color: #ee5a0b;
   font-size: 48px;
   text-align: center;
+`
+
+export const ButtonContainer = styled.div`
+  margin-top: 24px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `

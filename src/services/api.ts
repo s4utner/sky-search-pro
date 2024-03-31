@@ -1,7 +1,7 @@
 const baseUrl = 'https://api.github.com/search/users?q='
 
 export const getUsersByLogin = async (login: string) => {
-  const response = await fetch(`${baseUrl}${login}&per_page=12`)
+  const response = await fetch(`${baseUrl}${login}&per_page=14`)
 
   if (!response.ok) {
     console.log('Произошла ошибка')
