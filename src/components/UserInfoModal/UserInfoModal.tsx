@@ -46,7 +46,7 @@ export const UserInfoModal: FC<UserInfoModalProps> = ({
     <styles.Background onClick={closeModal}>
       <styles.MainInfo onClick={(event) => event.stopPropagation()}>
         {isFollowersNumberLoading || isOrganizationsNumberLoading || isRepositoriesNumberLoading ? (
-          <Loader />
+          <Loader variant={'secondary'} />
         ) : (
           <>
             <styles.CloseIcon src={closeIcon} onClick={closeModal} />
