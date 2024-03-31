@@ -10,22 +10,15 @@ export interface UserListProps {
   isError?: boolean
 }
 
-export const UsersList: FC<UserListProps> = ({ users, isLoading, isSuccess, isError }) => {
-  console.log(isSuccess)
-  console.log(!isLoading)
-  users && console.log(users.length < 1)
-  console.log(!isError)
-
-  return (
-    <styles.UsersList users={users}>
-      {isSuccess && users.length > 0 ? (
-        users.map((user: IUser) => <UserCard key={user.id} user={user} />)
-      ) : isSuccess && !isLoading && users.length < 1 && !isError ? (
-        <styles.NoUsersMessage>Пользователи по запросу не найдены</styles.NoUsersMessage>
-      ) : (
-        !isLoading &&
-        !isError && <styles.NoUsersMessage>Введите логин пользователя, которого хотите найти</styles.NoUsersMessage>
-      )}
-    </styles.UsersList>
-  )
-}
+export const UsersList: FC<UserListProps> = ({ users, isLoading, isSuccess, isError }) => (
+  <styles.UsersList users={users}>
+    {isSuccess && users.length > 0 ? (
+      users.map((user: IUser) => <UserCard key={user.id} user={user} />)
+    ) : isSuccess && !isLoading && users.length < 1 && !isError ? (
+      <styles.NoUsersMessage>Пользователи по запросу не найдены</styles.NoUsersMessage>
+    ) : (
+      !isLoading &&
+      !isError && <styles.NoUsersMessage>Введите логин пользователя, которого хотите найти</styles.NoUsersMessage>
+    )}
+  </styles.UsersList>
+)

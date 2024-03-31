@@ -2,17 +2,24 @@ import { Loader, SearchBar, UsersList, ErrorMessage, Button } from './components
 import { useGetUsersByLoginQuery } from './hooks'
 import { GlobalStyle } from './GlobalStyle'
 import * as styles from './AppStyle'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const App = () => {
   const [login, setLogin] = useState('')
+  const [pageNumber, setPageNumber] = useState(1)
+
+  useEffect(() => {
+    if (login === '') {
+      setPageNumber(1)
+    }
+  }, [login])
 
   const {
     data: searchedUsers,
     isLoading: isSearchedUsersLoading,
     isError: isSearchedUsersError,
     isSuccess: isSearchedUsersSuccess,
-  } = useGetUsersByLoginQuery(login)
+  } = useGetUsersByLoginQuery(login, pageNumber)
 
   return (
     <>
@@ -29,7 +36,7 @@ export const App = () => {
         />
         {isSearchedUsersSuccess && searchedUsers.length > 0 && (
           <styles.ButtonContainer>
-            <Button children={'Показать еще'} />
+            <Button children={'Показать еще'} onClick={() => setPageNumber(pageNumber + 1)} />
           </styles.ButtonContainer>
         )}
         {isSearchedUsersError && <ErrorMessage />}
