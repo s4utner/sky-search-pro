@@ -19,23 +19,25 @@ export const getUsersByLogin = async (login: string, pageNumber: number, sortMet
 }
 
 export const getUserRepositories = async (url: string) => {
-  const repositories = await octokit.paginate(`${url}?per_page=100`, {
+  const response = await fetch(`${url}?per_page=100`, {
     headers: {
       accept: 'application/vnd.github+json',
     },
   })
 
-  const repositoriesNumber = repositories.length
+  const repositories = await response.json()
+  const repositoriesNumber: number = repositories.length
   return repositoriesNumber
 }
 
 export const getUserOrganizations = async (url: string) => {
-  const organizations = await octokit.paginate(`${url}?per_page=100`, {
+  const response = await fetch(`${url}?per_page=100`, {
     headers: {
       accept: 'application/vnd.github+json',
     },
   })
 
+  const organizations = await response.json()
   const organizationsNumber = organizations.length
   return organizationsNumber
 }

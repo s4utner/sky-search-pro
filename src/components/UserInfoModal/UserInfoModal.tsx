@@ -15,27 +15,24 @@ interface UserInfoModalProps {
 
 export const UserInfoModal: FC<UserInfoModalProps> = ({ avatarUrl, login, reposUrl, organizationsUrl, closeModal }) => {
   const {
-    data: repositoriesNumber,
-    isFetching: isRepositoriesNumberFetching,
-    isLoading: isRepositoriesNumberLoading,
-    isError: isRepositoriesNumberError,
-  } = useGetUserRepositoriesQuery(reposUrl)
-
-  const {
     data: organizationsNumber,
-    isFetching: isOrganizationsNumberFetching,
     isLoading: isOrganizationsNumberLoading,
     isError: isOrganizationsNumberError,
+    isSuccess: isOrganizationsNumberSuccess,
   } = useGetUserOrganizationsQuery(organizationsUrl)
+
+  const {
+    data: repositoriesNumber,
+    isLoading: isRepositoriesNumberLoading,
+    isError: isRepositoriesNumberError,
+    isSuccess: isRepositoriesNumberSuccess,
+  } = useGetUserRepositoriesQuery(reposUrl)
 
   return (
     <styles.Background onClick={closeModal}>
       <styles.MainInfo onClick={(event) => event.stopPropagation()}>
         <styles.CloseIcon src={closeIcon} onClick={closeModal} />
-        {isOrganizationsNumberFetching ||
-        isOrganizationsNumberLoading ||
-        isRepositoriesNumberFetching ||
-        isRepositoriesNumberLoading ? (
+        {isOrganizationsNumberLoading || isRepositoriesNumberLoading ? (
           <Loader variant={'secondary'} />
         ) : isOrganizationsNumberError || isRepositoriesNumberError ? (
           <ErrorMessage variant={'secondary'} />
@@ -44,8 +41,14 @@ export const UserInfoModal: FC<UserInfoModalProps> = ({ avatarUrl, login, reposU
             <styles.Avatar src={avatarUrl} />
             <styles.Info>
               <styles.Login href={`https://github.com/${login}`}>{cutUserLogin(login, 12)}</styles.Login>
-              <styles.InfoText>Репозитории: {repositoriesNumber}</styles.InfoText>
-              <styles.InfoText>Организации: {organizationsNumber}</styles.InfoText>
+              {isRepositoriesNumberSuccess && (
+                <styles.InfoText>Репозитории: {repositoriesNumber < 100 ? repositoriesNumber : '>100'}</styles.InfoText>
+              )}
+              {isOrganizationsNumberSuccess && (
+                <styles.InfoText>
+                  Организации: {organizationsNumber < 100 ? organizationsNumber : '>100'}
+                </styles.InfoText>
+              )}
             </styles.Info>
           </>
         )}
