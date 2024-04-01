@@ -1,6 +1,3 @@
-import { Octokit } from 'octokit'
-
-const octokit = new Octokit({})
 const baseUrl = 'https://api.github.com/search/users?q='
 
 export const getUsersByLogin = async (login: string, pageNumber: number, sortMethod: string) => {
@@ -19,23 +16,25 @@ export const getUsersByLogin = async (login: string, pageNumber: number, sortMet
 }
 
 export const getUserRepositories = async (url: string) => {
-  const repositories = await octokit.paginate(`${url}?per_page=100`, {
+  const response = await fetch(`${url}?per_page=100`, {
     headers: {
       accept: 'application/vnd.github+json',
     },
   })
 
+  const repositories = await response.json()
   const repositoriesNumber = repositories.length
   return repositoriesNumber
 }
 
 export const getUserOrganizations = async (url: string) => {
-  const organizations = await octokit.paginate(`${url}?per_page=100`, {
+  const response = await fetch(`${url}?per_page=100`, {
     headers: {
       accept: 'application/vnd.github+json',
     },
   })
 
+  const organizations = await response.json()
   const organizationsNumber = organizations.length
   return organizationsNumber
 }
