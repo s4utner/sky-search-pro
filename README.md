@@ -4,7 +4,7 @@ _Сервис для поиска пользователей GitHub_
 
 ## Ссылка на приложение
 
-[**Sky Search Pro**](https://sky-fitness-pro-lime.vercel.app/)
+[**Sky Search Pro**](https://sky-search-pro.vercel.app/)
 
 ## Установка и запуск
 
