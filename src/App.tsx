@@ -39,7 +39,7 @@ export const App = () => {
           isSuccess={isSearchedUsersSuccess}
           isError={isSearchedUsersError}
         />
-        {isSearchedUsersSuccess && searchedUsers.length > 0 && (
+        {isSearchedUsersSuccess && searchedUsers.length > 0 && searchedUsers.length === 14 && (
           <styles.ButtonContainer>
             <Button children={'Показать еще'} onClick={() => setPageNumber(pageNumber + 1)} />
           </styles.ButtonContainer>
