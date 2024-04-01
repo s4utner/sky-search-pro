@@ -44,8 +44,10 @@ export const UserInfoModal: FC<UserInfoModalProps> = ({ avatarUrl, login, reposU
             <styles.Avatar src={avatarUrl} />
             <styles.Info>
               <styles.Login href={`https://github.com/${login}`}>{cutUserLogin(login, 12)}</styles.Login>
-              <styles.InfoText>Репозитории: {repositoriesNumber}</styles.InfoText>
-              <styles.InfoText>Организации: {organizationsNumber}</styles.InfoText>
+              <styles.InfoText>Репозитории: {repositoriesNumber === 100 ? '>100' : repositoriesNumber}</styles.InfoText>
+              <styles.InfoText>
+                Организации: {organizationsNumber === 100 ? '>100' : organizationsNumber}
+              </styles.InfoText>
             </styles.Info>
           </>
         )}
