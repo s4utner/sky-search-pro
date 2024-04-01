@@ -1,6 +1,6 @@
 import { Octokit } from 'octokit'
 
-const octokit = new Octokit({ auth: `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` })
+const octokit = new Octokit({})
 const baseUrl = 'https://api.github.com/search/users?q='
 
 export const getUsersByLogin = async (login: string, pageNumber: number, sortMethod: string) => {
