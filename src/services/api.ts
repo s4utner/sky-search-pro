@@ -23,7 +23,7 @@ export const getUserRepositories = async (url: string) => {
   })
 
   const repositories = await response.json()
-  const repositoriesNumber: number = repositories.length
+  const repositoriesNumber = repositories.length
   return repositoriesNumber
 }
 
