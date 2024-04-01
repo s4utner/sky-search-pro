@@ -41,7 +41,8 @@ export const Avatar = styled.img`
 `
 
 export const Login = styled.a`
-  font-size: 48px;
+  max-width: 340px;
+  font-size: 40px;
   text-decoration: none;
   color: #000;
   cursor: pointer;

@@ -48,6 +48,4 @@ export const SortSelect = styled.select`
   cursor: pointer;
 `
 
-export const SortSelectOption = styled.option`
-  font-size: 8px;
-`
+export const SortSelectOption = styled.option``

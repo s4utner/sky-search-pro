@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Button, UserInfoModal } from '../../components'
+import { cutUserLogin } from '../../helpers/helpers'
 import type { FC } from 'react'
 import { IUser } from '../../types/types'
 import * as styles from './UserCardStyle'
@@ -16,7 +17,7 @@ export const UserCard: FC<UserCardProps> = ({ user }) => {
       <styles.UserCard>
         <styles.UserInfo>
           <styles.UserAvatar src={user.avatar_url}></styles.UserAvatar>
-          <styles.UserLogin>{user.login}</styles.UserLogin>
+          <styles.UserLogin>{cutUserLogin(user.login, 15)}</styles.UserLogin>
         </styles.UserInfo>
         <Button children={'Подробнее'} variant={'secondary'} onClick={() => setIsUserModalVisible(true)} />
       </styles.UserCard>
